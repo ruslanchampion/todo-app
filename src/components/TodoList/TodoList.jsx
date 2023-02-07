@@ -40,11 +40,13 @@ export default function TodoList( {task, setTask} ) {
 
     setTask(taskChanged);
   }
-
+ <TodoList>
+   {task.map(todo => <Todo onHandleDelete={onHandleDelete} />)}
+ </TodoList>
   return(
     <article className={style.todo_list_article}>
       {
-        task.map( function (item) {
+        task.map((item) => {
           if(item.edited === false){
           return(
             <section className={style.todo_list_section} key={item.id}>
