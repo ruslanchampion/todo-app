@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import { v1 as uuidv1 } from 'uuid';
 
-function App() {
+/*Import components*/
+import Title from './components/Title/Title';
+import TodoEnter from './components/TodoEnter/TodoEnter';
+import TodoList from './components/TodoList/TodoList';
+
+export default function App() {
+
+  const [task, setTask] = useState([
+    {
+      id: uuidv1(),
+      title: 'Example task#1',
+      completed: false,
+      edited: false,
+    },
+    {
+      id: uuidv1(),
+      title: 'Example task#2',
+      completed: false,
+      edited: false,
+    },
+  ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title />
+      <TodoEnter task={task} setTask={setTask}/>
+      <TodoList task={task} setTask={setTask}/>
     </div>
   );
 }
-
-export default App;

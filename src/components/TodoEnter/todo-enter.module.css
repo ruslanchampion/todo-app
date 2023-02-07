@@ -1,0 +1,114 @@
+.todo_enter_article {
+  width: 50vw;
+  height: 15vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo_enter_input {
+  width: 80%;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #068;
+  padding: 0 15px 0 15px;
+}
+
+.todo_enter_input:hover {
+box-shadow: 0px 0px 17px 9px rgba(0, 144, 255, 0.2);
+transition: 0.1s ease-out;
+}
+
+.todo_enter_input:focus {
+  outline: none;
+  border: 1px solid #068;
+  background-color: #068;
+  box-shadow: 0px 0px 17px 9px rgba(0, 144, 255, 0.2);
+  transition: 0.1s ease-out;
+  color: #ccc;
+}
+
+.todo_enter_input::-webkit-input-placeholder {
+  color: #000;
+}
+
+.todo_enter_input:focus::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.todo_enter_button {
+  background-color: transparent;
+  border: 1px solid #068;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+.todo_enter_button:hover{
+  background-color: #068;
+  color: #ccc;
+  box-shadow: 0px 0px 17px 9px rgba(0, 144, 255, 0.2);
+  transition: 0.1s ease-out;
+}
+
+.todo_enter_button:active{
+  background-color: #069;
+  border: 1px solid #069;
+  color: #ccc;
+}
+
+/* .todo_button {
+  display: inline-grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  appearance: none;
+  cursor: pointer;
+  font-size: 3rem;
+  padding: 1em 3em;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: hsl(200 100% 65%);
+  border: 5px solid currentColor;
+  border-radius: 0.125em;
+  overflow: hidden;
+}
+
+.todo_button::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 750ms;
+  z-index: -1;
+  width: 150%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.5;
+}
+
+.pulse::before {
+  animation: pulse 500ms;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+} */
