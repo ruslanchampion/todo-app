@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { v1 as uuidv1 } from 'uuid';
 /*Import components*/
 import Title from './components/Title/Title';
-import TodoEnter from './components/TodoEnter/TodoEnter';
+import TodoEnter from './components/TodoInput/TodoInput';
 import TodoList from './components/TodoList/TodoList';
 
-import './App.css';
+// import './App.css';
 
 export default function App() {
 

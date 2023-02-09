@@ -1,4 +1,4 @@
-import style from './todo-list.module.css';
+import style from './TodoList.module.css';
 
 export default function TodoList( {task, setTask} ) {
 
@@ -41,26 +41,26 @@ export default function TodoList( {task, setTask} ) {
   }
 
   return(
-    <article className={style.todo_list_article}>
+    <article className={style.article}>
       {
         task.map( function (item) {
           if(item.edited === false){
           return(
-            <section className={style.todo_list_section} key={item.id}>
-              <div className={style.todo_list_title__container}>
-                <h2 className={style.todo_list_title}>{item.title}</h2>
+            <section className={style.section} key={item.id}>
+              <div className={style.title__container}>
+                <h2 className={style.title}>{item.title}</h2>
               </div>
-              <div className={style.todo_list_buttons}>
-                <button className={style.todo_list_button} onClick={() => editTask(item.id)}>Edit</button>
-                <button className={style.todo_list_button} onClick={() => deleteTask(item.id)}>Delete</button>
-                <button className={style.todo_list_button} onClick={() => completeTask(item.id)}>Done / Undone</button>
+              <div className={style.buttons}>
+                <button className={style.button} onClick={() => editTask(item.id)}>Edit</button>
+                <button className={style.button} onClick={() => deleteTask(item.id)}>Delete</button>
+                <button className={style.button} onClick={() => completeTask(item.id)}>Done / Undone</button>
               </div>
             </section>
           )} else {
             return(
               <section key={item.id}>
-                <input className={style.todo_list_input__edit} type="text" value={item.title} onChange={ (event) => {editTitle(item.id, event.target.value)} }/>
-                <button className={style.todo_list_button} onClick={() => editTask(item.id)}>Save</button>
+                <input className={style.input__edit} type="text" value={item.title} onChange={ (event) => {editTitle(item.id, event.target.value)} }/>
+                <button className={style.button} onClick={() => editTask(item.id)}>Save</button>
               </section>
             )
           }

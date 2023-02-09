@@ -1,9 +1,9 @@
-import style from './title.module.css';
+import style from './Title.module.css';
 
 export default function Title() {
   return(
-    <header className={style.title}>
-      <h1 className={style.title_title}>Simple to-do SPA</h1>
+    <header className={style.main}>
+      <h1 className={style.title}>Simple to-do SPA</h1>
     </header>
   )
 }

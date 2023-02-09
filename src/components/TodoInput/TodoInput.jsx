@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v1 as uuidv1 } from 'uuid';
 
-import style from './todo-enter.module.css';
+import style from './TodoInput.module.css';
 
 export default function TodoEnter({task, setTask}){
 
@@ -20,9 +20,9 @@ export default function TodoEnter({task, setTask}){
   }
 
   return(
-    <article className={style.todo_enter_article}>
-      <input className={style.todo_enter_input} type="text" value={taskInput} onChange={ (event) => {setTaskInput(event.target.value)} } placeholder='Enter your task here'/>
-      <button className={style.todo_enter_button} onClick={()=>{addTask()}}>Add task</button>
+    <article className={style.article}>
+      <input className={style.input} type="text" value={taskInput} onChange={ (event) => {setTaskInput(event.target.value)} } placeholder='Enter your task here'/>
+      <button className={style.button} onClick={()=>{addTask()}}>Add task</button>
     </article>
   )
 }

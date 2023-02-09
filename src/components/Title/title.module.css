@@ -1,4 +1,4 @@
-.title {
+.main {
   font-family: 'Montserrat', sans-serif;
   line-height: 120%;
   background-color: #066;
@@ -6,7 +6,7 @@
   cursor: default;
 }
 
-.title_title {
+.title {
   font-size: 24px;
   font-weight: 400;
   line-height: 140%;
@@ -14,7 +14,7 @@
   padding: 16px 0 16px;
 }
 
-.title_link {
+.link {
   text-decoration: none;
   color: #ccc;
   cursor: pointer;
