@@ -6,7 +6,6 @@
   flex-direction: column;
   justify-content: start;
   align-items: space-between;
-  /* align-items: space-between; */
 }
 
 .todo_list_section {
@@ -30,7 +29,6 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: normal;
   font-size: 14px;
-  /* overflow: hidden; */
 }
 
 .todo_list_buttons {
