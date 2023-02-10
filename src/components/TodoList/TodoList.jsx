@@ -3,41 +3,22 @@ import style from './TodoList.module.css';
 export default function TodoList( {task, setTask} ) {
 
   function deleteTask(id) {
-    let taskDeleted = [...task].filter(item => item.id !== id);
-    setTask(taskDeleted);
+    setTask(prev => [...prev].filter(item => item.id !== id));
   }
 
   function editTask(id) {
-    let taskEdited = [...task].map( (item) => {
-      if (item.id === id) {
-        item.edited = !item.edited;
-      }
-      return item;
-    });
-
-    setTask(taskEdited);
+    // setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : {...item}));
+    setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));//раотает так же как и сверху
+    // setTask(prev => prev.map(item => item.id === id ? !item.edited : item));//не работает т.к. все поля объекта кроме 'edited' пропадают??
+    console.log(task)
   }
 
   function completeTask(id) {
-    let taskCompleted = [...task].map( (item) => {
-      if (item.id === id) {
-        item.completed = !item.completed;
-      }
-      return item;
-    });
-
-    setTask(taskCompleted);
+    setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
   }
 
   function editTitle(id, titleChanges) {
-    let taskChanged = [...task].map( (item) => {
-      if (item.id === id) {
-        item.title = titleChanges;
-      }
-      return item;
-    });
-
-    setTask(taskChanged);
+    setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
   }
 
   return(
