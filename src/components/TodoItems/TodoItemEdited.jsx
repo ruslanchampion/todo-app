@@ -1,6 +1,11 @@
+import useTask from '../hooks/useTask.js';
+
 import style from '../TodoList/TodoList.module.css';
 
-export default function TodoItem({editTask, editTitle, id, title}) {
+export default function TodoItem({id, title}) {
+  
+  let {editTask, editTitle} = useTask();
+  
   return(
     <section key={id}>
       <input className={style.input__edit} type="text" value={title} onChange={ (event) => {editTitle(id, event.target.value)} }/>

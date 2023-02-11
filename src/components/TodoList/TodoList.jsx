@@ -1,27 +1,10 @@
 import TodoItem from '../TodoItems/TodoItem';
 import TodoItemEdited from '../TodoItems/TodoItemEdited';
+import useTask from '../hooks/useTask';
 
-export default function TodoList( {task, setTask} ) {
+export default function TodoList() {
 
-  function editTask(id) {
-    setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));
-    console.log('editTask')
-  }
-
-  function editTitle(id, titleChanges) {
-    setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
-    console.log('editTitle')
-  }
-
-  function completeTask(id) {
-    setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
-    console.log('completeTask')
-  }
-
-  function deleteTask(id) {
-    setTask(prev => prev.filter(item => item.id !== id));
-    console.log('deleteTask')
-  }
+  let {task} = useTask();
 
   return(
     <article style={{
@@ -35,8 +18,8 @@ export default function TodoList( {task, setTask} ) {
     }}>
       {
         task.map(item => item.edited === false ?
-          <TodoItem completeTask={completeTask} deleteTask={deleteTask} editTask={editTask} key={item.id} id={item.id} title={item.title}/>
-          : <TodoItemEdited editTask={editTask} editTitle={editTitle} key={item.id} id={item.id} title={item.title}/>
+          <TodoItem key={item.id} id={item.id} title={item.title}/>
+          : <TodoItemEdited key={item.id} id={item.id} title={item.title}/>
         )
       }
     </article>

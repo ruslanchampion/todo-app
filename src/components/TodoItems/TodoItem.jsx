@@ -1,6 +1,11 @@
+import useTask from '../hooks/useTask.js';
+
 import style from '../TodoList/TodoList.module.css';
 
-export default function TodoItem({completeTask, deleteTask, editTask, id, title}) {
+export default function TodoItem({id, title}) {
+  
+  let {editTask, deleteTask, completeTask} = useTask();
+  
   return(
     <section className={style.section} key={id}>
       <div className={style.title__container}>

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import useTask from '../hooks/useTask';
 
 import style from './TodoInput.module.css';
 
-export default function TodoEnter({setTask}){
+export default function TodoEnter(){
 
+  const {setTask} = useTask();
   const [taskInput, setTaskInput] = useState('');
 
   function addTask() {
