@@ -1,51 +1,43 @@
-import style from './TodoList.module.css';
+import TodoItem from '../TodoItems/TodoItem';
+import TodoItemEdited from '../TodoItems/TodoItemEdited';
 
 export default function TodoList( {task, setTask} ) {
 
-  function deleteTask(id) {
-    setTask(prev => [...prev].filter(item => item.id !== id));
-  }
-
   function editTask(id) {
-    // setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : {...item}));
-    setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));//раотает так же как и сверху
-    // setTask(prev => prev.map(item => item.id === id ? !item.edited : item));//не работает т.к. все поля объекта кроме 'edited' пропадают??
-    console.log(task)
-  }
-
-  function completeTask(id) {
-    setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
+    setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));
+    console.log('editTask')
   }
 
   function editTitle(id, titleChanges) {
     setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
+    console.log('editTitle')
+  }
+
+  function completeTask(id) {
+    setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
+    console.log('completeTask')
+  }
+
+  function deleteTask(id) {
+    setTask(prev => prev.filter(item => item.id !== id));
+    console.log('deleteTask')
   }
 
   return(
-    <article className={style.article}>
+    <article style={{
+      width: '50vw',
+      height: '55vh',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'space-between',
+    }}>
       {
-        task.map( function (item) {
-          if(item.edited === false){
-          return(
-            <section className={style.section} key={item.id}>
-              <div className={style.title__container}>
-                <h2 className={style.title}>{item.title}</h2>
-              </div>
-              <div className={style.buttons}>
-                <button className={style.button} onClick={() => editTask(item.id)}>Edit</button>
-                <button className={style.button} onClick={() => deleteTask(item.id)}>Delete</button>
-                <button className={style.button} onClick={() => completeTask(item.id)}>Done / Undone</button>
-              </div>
-            </section>
-          )} else {
-            return(
-              <section key={item.id}>
-                <input className={style.input__edit} type="text" value={item.title} onChange={ (event) => {editTitle(item.id, event.target.value)} }/>
-                <button className={style.button} onClick={() => editTask(item.id)}>Save</button>
-              </section>
-            )
-          }
-        })
+        task.map(item => item.edited === false ?
+          <TodoItem completeTask={completeTask} deleteTask={deleteTask} editTask={editTask} key={item.id} id={item.id} title={item.title}/>
+          : <TodoItemEdited editTask={editTask} editTitle={editTitle} key={item.id} id={item.id} title={item.title}/>
+        )
       }
     </article>
   )
