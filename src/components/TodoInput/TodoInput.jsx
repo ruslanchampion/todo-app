@@ -1,11 +1,9 @@
 import { useState } from "react";
-import useTask from '../hooks/useTask';
 
 import style from './TodoInput.module.css';
 
-export default function TodoEnter(){
+export default function TodoEnter({setTask}){
 
-  const {setTask} = useTask();
   const [taskInput, setTaskInput] = useState('');
 
   function addTask() {
@@ -17,7 +15,6 @@ export default function TodoEnter(){
     };
 
     setTask((prev) => [...prev, taskToAdd])
-
     setTaskInput(() => '')
   }
 

@@ -1,10 +1,7 @@
 import TodoItem from '../TodoItems/TodoItem';
 import TodoItemEdited from '../TodoItems/TodoItemEdited';
-import useTask from '../hooks/useTask';
 
-export default function TodoList() {
-
-  let {task} = useTask();
+export default function TodoList({editTask, editTitle, completeTask, deleteTask, task}) {
 
   return(
     <article style={{
@@ -17,17 +14,9 @@ export default function TodoList() {
       alignItems: 'space-between',
     }}>
       {
-        // task.map(item => {
-        //   if (item.edited === false) {
-        //     return <TodoItem key={item.id} id={item.id} title={item.title}/>;
-        //   } else {
-        //     return <TodoItemEdited key={item.id} id={item.id} title={item.title}/>;
-        //   }
-        // })
-
         task.map(item => item.edited === false ?
-          <TodoItem key={item.id} id={item.id} title={item.title}/>
-          : <TodoItemEdited key={item.id} id={item.id} title={item.title}/>
+          <TodoItem key={item.id} id={item.id} title={item.title} editTask={editTask} deleteTask={deleteTask} completeTask={completeTask}/>
+          : <TodoItemEdited key={item.id} id={item.id} title={item.title} editTask={editTask} editTitle={editTitle}/>
         )
       }
     </article>

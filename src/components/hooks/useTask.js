@@ -5,12 +5,14 @@ export default function useTask() {
 
   // let a = JSON.parse(taskData);
 
-  const [task, setTask] = useState([{
-    title: 'dfdf',
-    edited: false,
-    completed: false,
+  const [task, setTask] = useState([
+    {
     id: 353434343434,
-  }]);
+    title: 'hmmm',
+    completed: false,
+    edited: false,
+    },
+  ]);
  
   // console.log(task)
  
