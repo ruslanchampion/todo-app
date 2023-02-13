@@ -17,6 +17,14 @@ export default function TodoList() {
       alignItems: 'space-between',
     }}>
       {
+        // task.map(item => {
+        //   if (item.edited === false) {
+        //     return <TodoItem key={item.id} id={item.id} title={item.title}/>;
+        //   } else {
+        //     return <TodoItemEdited key={item.id} id={item.id} title={item.title}/>;
+        //   }
+        // })
+
         task.map(item => item.edited === false ?
           <TodoItem key={item.id} id={item.id} title={item.title}/>
           : <TodoItemEdited key={item.id} id={item.id} title={item.title}/>

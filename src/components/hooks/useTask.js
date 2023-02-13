@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function useTask() {
 
   // let a = JSON.parse(taskData);
+
   const [task, setTask] = useState([{
     title: 'dfdf',
     edited: false,
@@ -11,15 +12,32 @@ export default function useTask() {
     id: 353434343434,
   }]);
  
-  console.log(task)
+  // console.log(task)
  
-  const editTask = (id) => setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));
+  function editTask(id) {
+    setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));
+    console.log(task);
+  }
+  function editTitle(id, titleChanges) {
+    setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
+    console.log(task);
+  }
+  function deleteTask(id) {
+    setTask(prev => prev.filter(item => item.id !== id));
+    console.log(task);
+  }
+  function completeTask(id) {
+    setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
+    console.log(task);
+  }
+ 
+  // const editTask = (id) => setTask(prev => prev.map(item => item.id === id ? {...item, edited: !item.edited} : item));
   
-  const editTitle = (id, titleChanges) => setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
+  // const editTitle = (id, titleChanges) => setTask(prev => prev.map(item => item.id === id ? {...item, title: titleChanges} : item));
   
-  const deleteTask = (id) => setTask(prev => prev.filter(item => item.id !== id));
+  // const deleteTask = (id) => setTask(prev => prev.filter(item => item.id !== id));
   
-  const completeTask = (id) => setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
+  // const completeTask = (id) => setTask(prev => prev.map(item => item.id === id ? {...item, completed: !item.completed} : item));
 
   return {editTask, editTitle, deleteTask, completeTask, task, setTask}
 }
