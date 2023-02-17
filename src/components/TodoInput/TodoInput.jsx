@@ -2,7 +2,7 @@ import useInput  from '../hooks/useInput.js';
 import Button from '../UI/button/Button.jsx';
 import Input from '../UI/input/Input.jsx';
 
-export default function TodoEnter({createTodo}){
+export default function TodoEnter({callback}){
 
   const input = useInput('');
 
@@ -15,7 +15,7 @@ export default function TodoEnter({createTodo}){
         edited: false,
       };
       
-      createTodo(newTodo);
+      callback.createTodo(newTodo);
       input.setValue(() => '');
     } else {
       alert('Enter the task!')

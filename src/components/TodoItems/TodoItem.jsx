@@ -2,7 +2,7 @@ import Button from '../UI/button/Button.jsx';
 
 import style from './TodoItem.module.css';
 
-export default function TodoItem({id, title, editModeTodo, deleteTodo, completeTodo}) {
+export default function TodoItem({id, title, callback}) {
   
   return(
     <section className={style.section}>
@@ -18,9 +18,9 @@ export default function TodoItem({id, title, editModeTodo, deleteTodo, completeT
           alignItems: 'center',
         }}
       >
-        <Button onClick={() => editModeTodo(id)}>Edit</Button>
-        <Button onClick={() => deleteTodo(id)}>Delete</Button>
-        <Button onClick={() => completeTodo(id)}>Done / Undone</Button>
+        <Button onClick={() => callback.editModeTodo(id)}>Edit</Button>
+        <Button onClick={() => callback.deleteTodo(id)}>Delete</Button>
+        <Button onClick={() => callback.completeTodo(id)}>Done / Undone</Button>
       </div>
     </section>
   )

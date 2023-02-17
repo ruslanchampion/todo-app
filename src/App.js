@@ -16,37 +16,38 @@ export default function App() {
     },
   ]);
 
-  const createTodo = (newTodo) => {
-    setTasks((prev) => [...prev, newTodo]);
+  let callback = {
+    
+    createTodo (newTodo) {
+      setTasks((prev) => [...prev, newTodo]);
+    },
+  
+    deleteTodo (todoId) {
+      setTasks(prev => prev.filter(item => item.id !== todoId));
+    },
+  
+    editModeTodo (todoId) {
+      setTasks(prev => prev.map(item => item.id === todoId ? {...item, edited: !item.edited} : item));
+    },
+  
+    editTodoTitle (todoId, newTitle) {
+      setTasks(prev => prev.map(item => item.id === todoId ? {...item, title: newTitle} : item));
+    },
+  
+    completeTodo (todoId) {
+      setTasks(prev => prev.map(item => item.id === todoId ? {...item, completed: !item.completed} : item));
+      console.log(tasks)
+    },
   }
-
-  const deleteTodo = (todoId) => {
-    setTasks(prev => prev.filter(item => item.id !== todoId));
-  }
-
-  const editModeTodo = (todoId) => {
-    setTasks(prev => prev.map(item => item.id === todoId ? {...item, edited: !item.edited} : item));
-  }
-
-  const editTodoTitle = (todoId, newTitle) => {
-    setTasks(prev => prev.map(item => item.id === todoId ? {...item, title: newTitle} : item));
-  }
-
-  const completeTodo = (todoId) => {
-    setTasks(prev => prev.map(item => item.id === todoId ? {...item, completed: !item.completed} : item));
-    console.log(tasks)
-  }
+  
 
   return (
     <div className="App">
       <Title/>
-      <TodoInput createTodo={createTodo}/>
+      <TodoInput callback={callback}/>
       <TodoList 
-        editModeTodo={editModeTodo}
-        editTodoTitle={editTodoTitle}
-        completeTodo={completeTodo}
-        deleteTodo={deleteTodo}
-        task={tasks}
+        callback={callback}
+        tasks={tasks}
       />
     </div>
   );
