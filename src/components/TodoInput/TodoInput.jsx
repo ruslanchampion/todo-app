@@ -1,25 +1,21 @@
-import { useState } from "react";
+import useInput  from '../hooks/useInput.js';
 import Button from '../UI/button/Button.jsx';
 import Input from '../UI/input/Input.jsx';
 
 export default function TodoEnter({createTodo}){
 
-  const [taskInput, setTaskInput] = useState('');
+  const input = useInput('');
 
   function addTask() {
     let newTodo = {
       id: crypto.randomUUID(),
-      title: taskInput,
+      title: input.value,
       completed: false,
       edited: false,
     };
     
     createTodo(newTodo)
-    setTaskInput(() => '')
-  }
-
-  function handlerInputChange(event) {
-    setTaskInput(event.target.value)
+    // setTaskInput(() => '')
   }
 
   return(
@@ -33,7 +29,7 @@ export default function TodoEnter({createTodo}){
         alignItems: 'center',
       }
     }>
-      <Input type="text" value={taskInput} onChange={handlerInputChange} placeholder='Enter your task here'/>
+      <Input type="text" {...input} placeholder='Enter your task here'/>
       <Button onClick={addTask}>Add task</Button>
     </article>
   )

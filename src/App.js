@@ -14,7 +14,7 @@ export default function App() {
       title: 'hmmm',
       completed: false,
       edited: false,
-      },
+    },
   ]);
 
   const createTodo = (newTodo) => {
