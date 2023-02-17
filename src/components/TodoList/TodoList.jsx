@@ -1,7 +1,7 @@
 import TodoItem from '../TodoItems/TodoItem';
 import TodoItemEdited from '../TodoItems/TodoItemEdited';
 
-export default function TodoList({editTask, editTitle, completeTask, deleteTask, task}) {
+export default function TodoList({editModeTodo, editTodoTitle, completeTodo, deleteTodo, task}) {
 
   return(
     <article style={{
@@ -20,8 +20,21 @@ export default function TodoList({editTask, editTitle, completeTask, deleteTask,
       }
       {
         task.map(item => item.edited === false ?
-          <TodoItem key={item.id} id={item.id} title={item.title} editTask={editTask} deleteTask={deleteTask} completeTask={completeTask}/> :
-          <TodoItemEdited key={item.id} id={item.id} title={item.title} editTask={editTask} editTitle={editTitle}/>
+          <TodoItem 
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            editModeTodo={editModeTodo}
+            deleteTodo={deleteTodo}
+            completeTodo={completeTodo}
+          /> :
+          <TodoItemEdited
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            editModeTodo={editModeTodo}
+            editTodoTitle={editTodoTitle}
+          />
         )
       }
     </article>

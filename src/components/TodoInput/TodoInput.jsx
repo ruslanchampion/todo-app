@@ -7,15 +7,19 @@ export default function TodoEnter({createTodo}){
   const input = useInput('');
 
   function addTask() {
-    let newTodo = {
-      id: crypto.randomUUID(),
-      title: input.value,
-      completed: false,
-      edited: false,
-    };
-    
-    createTodo(newTodo);
-    setValue(() => '');
+    if(input.value) {
+      let newTodo = {
+        id: crypto.randomUUID(),
+        title: input.value,
+        completed: false,
+        edited: false,
+      };
+      
+      createTodo(newTodo);
+      input.setValue(() => '');
+    } else {
+      alert('Enter the task!')
+    }
   }
 
   return(
@@ -29,7 +33,7 @@ export default function TodoEnter({createTodo}){
         alignItems: 'center',
       }
     }>
-      <Input type="text" value={input.value} onChange={onChange} placeholder='Enter your task here'/>
+      <Input type="text" value={input.value} onChange={input.onChange} placeholder='Enter your task here'/>
       <Button onClick={addTask}>Add task</Button>
     </article>
   )
