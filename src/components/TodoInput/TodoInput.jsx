@@ -14,8 +14,8 @@ export default function TodoEnter({createTodo}){
       edited: false,
     };
     
-    createTodo(newTodo)
-    // setTaskInput(() => '')
+    createTodo(newTodo);
+    setValue(() => '');
   }
 
   return(
@@ -29,7 +29,7 @@ export default function TodoEnter({createTodo}){
         alignItems: 'center',
       }
     }>
-      <Input type="text" {...input} placeholder='Enter your task here'/>
+      <Input type="text" value={input.value} onChange={onChange} placeholder='Enter your task here'/>
       <Button onClick={addTask}>Add task</Button>
     </article>
   )
