@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-import style from './TodoInput.module.css';
+import Button from '../UI/button/Button.jsx';
+import Input from '../UI/input/Input.jsx';
 
 export default function TodoEnter({setTask}){
 
@@ -13,7 +13,7 @@ export default function TodoEnter({setTask}){
       completed: false,
       edited: false,
     };
-
+    
     setTask((prev) => [...prev, taskToAdd])
     setTaskInput(() => '')
   }
@@ -23,9 +23,18 @@ export default function TodoEnter({setTask}){
   }
 
   return(
-    <article className={style.article}>
-      <input className={style.input} type="text" value={taskInput} onChange={handlerInputChange} placeholder='Enter your task here'/>
-      <button className={style.button} onClick={addTask}>Add task</button>
+    <article style={
+      {
+        width: '50vw',
+        height: '15vh',
+        margin: '0 auto',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }
+    }>
+      <Input type="text" value={taskInput} onChange={handlerInputChange} placeholder='Enter your task here'/>
+      <Button onClick={addTask}>Add task</Button>
     </article>
   )
 }
