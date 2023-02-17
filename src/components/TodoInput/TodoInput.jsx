@@ -2,19 +2,19 @@ import { useState } from "react";
 import Button from '../UI/button/Button.jsx';
 import Input from '../UI/input/Input.jsx';
 
-export default function TodoEnter({setTask}){
+export default function TodoEnter({createTodo}){
 
   const [taskInput, setTaskInput] = useState('');
 
   function addTask() {
-    let taskToAdd = {
+    let newTodo = {
       id: crypto.randomUUID(),
       title: taskInput,
       completed: false,
       edited: false,
     };
     
-    setTask((prev) => [...prev, taskToAdd])
+    createTodo(newTodo)
     setTaskInput(() => '')
   }
 
