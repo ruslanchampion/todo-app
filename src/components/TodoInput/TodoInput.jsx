@@ -2,7 +2,30 @@ import useInput  from '../hooks/useInput.js';
 import Button from '../UI/button/Button.jsx';
 import Input from '../UI/input/Input.jsx';
 
-export default function TodoEnter({callback}){
+
+function SomeComp(){
+  const [state, setState] = useState("")
+  
+  const handleClickNewTask = (text) => {
+    let newTodo = {
+        id: crypto.randomUUID(),
+        title: text,
+        completed: false,
+        edited: false,
+      };
+      
+      createTodo(newTodo);
+  }
+  const handleInputNewTask = (text) => {
+    // setState(text)
+  }
+  return (
+    <TodoEnter handleClickNewTask={handleClickNewTask}>
+    <TodoInput handleInputNewTask={handleInputNewTask}>
+  )
+}
+
+export default function TodoEnter({handleClickNewTask}){
 
   const input = useInput('');
 
@@ -34,7 +57,7 @@ export default function TodoEnter({callback}){
       }
     }>
       <Input type="text" value={input.value} onChange={input.onChange} placeholder='Enter your task here'/>
-      <Button onClick={addTask}>Add task</Button>
+      <Button onClick={() => handleClickNewTask(input)}>Add task</Button>
     </article>
   )
 }
