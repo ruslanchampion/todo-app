@@ -1,0 +1,21 @@
+.select {
+  display: block;
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #068;
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: #000;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.option {
+  color:#000;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+}
