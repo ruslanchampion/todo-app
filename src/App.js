@@ -6,9 +6,7 @@ import {useState} from 'react';
 
 import './index.css';
 
-export default function App() {
-
-  let [tasks, setTasks] = useState([
+const default = [
     {
       id: crypto.randomUUID(),
       title: 'Second task',
@@ -21,9 +19,13 @@ export default function App() {
       completed: false,
       edited: false,
     },
-  ]);
+  ];
 
-  let [sortType, setSortType] = useState('');
+export default function App() {
+
+  const [tasks, setTasks] = useState(default);
+
+  const [sortType, setSortType] = useState('');
 
   let callback = {
     
@@ -72,6 +74,7 @@ export default function App() {
       <TodoList 
         callback={callback}
         tasks={tasks}
+        sortType={sortType}
       />
     </div>
   );
